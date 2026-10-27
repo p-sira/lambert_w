@@ -50,6 +50,8 @@ pub use swm1f::lambert_wm1f;
 /// The negative reciprocal of e (-1/e).
 ///
 /// This is the branch point of the Lambert W function.
+/// The rounded value lies slightly below the mathematical branch point.
+/// The real branch functions return exactly -1 at this value by convention.
 ///
 /// ```
 /// use lambert_w::{lambert_w0, NEG_INV_E};
@@ -60,6 +62,11 @@ pub use swm1f::lambert_wm1f;
 /// ```
 //            Rounded from -0.367_879_441_171_442_322
 pub const NEG_INV_E: f64 = -0.367_879_441_171_442_32;
+
+// (-1/e) - NEG_INV_E, computed at high precision. Subtract this after computing
+// z - NEG_INV_E so cancellation near the branch point does not amplify the
+// rounding error in NEG_INV_E through the square root.
+const NEG_INV_E_CORRECTION: f64 = 1.242_875_367_278_836_3e-17;
 
 /// 1/sqrt(e)
 //         Rounded from 0.606_530_659_712_633_423

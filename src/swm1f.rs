@@ -10,6 +10,8 @@ use crate::generic_math::{ln, rational_function, sqrt};
 
 const INV_SQRT_E: f32 = super::INV_SQRT_E as f32;
 const NEG_INV_E: f32 = super::NEG_INV_E as f32;
+// Rounding error of the f32 branch point; see super::NEG_INV_E_CORRECTION.
+const NEG_INV_E_CORRECTION: f32 = 9.149_755e-9;
 
 /// The secondary branch of the Lambert W function, computed on 32-bit floats with Fukushima's method[^1].
 ///
@@ -68,7 +70,7 @@ pub fn lambert_wm1f(z: f32) -> f32 {
         // W >= -2.483, Y_-1
 
         rational_function(
-            -z / (INV_SQRT_E + sqrt(z - NEG_INV_E)),
+            -z / (INV_SQRT_E + sqrt((z - NEG_INV_E) - NEG_INV_E_CORRECTION)),
             [-6.383_723, -74.968_65, -19.714_82, 70.677_33],
             [1.0, 24.295_837, 64.112_46, 17.994_497],
         )

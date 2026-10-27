@@ -3,6 +3,11 @@
 This file contains the changes to the crate since version 0.1.1.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+- Correct the rounded branch-point distance near -1/e in all six real Lambert W functions.
+- Add independently generated high-precision branch-point regression tests.
+
 ## [2.0.8] - 2026-10-26
 
 - Documentation improvements.

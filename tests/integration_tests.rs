@@ -24,7 +24,7 @@ fn test_lambert_w0() {
     assert_eq!(lambert_w0(NEG_INV_E), -1.0);
     assert_abs_diff_eq!(
         lambert_w0(NEG_INV_E + f64::EPSILON),
-        -0.999_999_965_255_797_6
+        -0.999_999_966_242_187_7
     );
     assert_abs_diff_eq!(
         lambert_w0(-2.678_794_411_714_424e-1),
@@ -299,7 +299,7 @@ fn test_lambert_wm1() {
     assert_eq!(lambert_wm1(NEG_INV_E), -1.0);
     assert_relative_eq!(
         lambert_wm1(-3.578_794_411_714_423e-1),
-        -1.253_493_791_367_214,
+        -1.253_493_791_367_214_4,
         max_relative = 1.6 * f64::EPSILON,
     );
     assert_relative_eq!(

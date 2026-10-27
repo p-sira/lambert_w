@@ -13,7 +13,7 @@
 
 use crate::{
     generic_math::{ln, polynomial, rational_function, sqrt},
-    NEG_INV_E,
+    NEG_INV_E, NEG_INV_E_CORRECTION,
 };
 
 /// The principal branch of the Lambert W function computed to 50 bits of accuracy on 64-bit floats with a method derived from Fukushima's [^1].
@@ -108,7 +108,7 @@ pub fn lambert_w0(z: f64) -> f64 {
         // W <= 0.893, X_1
 
         rational_function(
-            sqrt(zc),
+            sqrt(zc - NEG_INV_E_CORRECTION),
             [
                 -0.999_999_999_999_999_889_0,
                 -2.739_966_866_820_365_930_4,
